@@ -11,7 +11,7 @@ export default function Searchbar() {
                 <input
                     type="text"
                     placeholder="Search by issue name..."
-                    className="border-2 border-border text-subheading placeholder:text-subheading rounded-lg pl-8 py-1"
+                    className="border border-border text-subheading placeholder:text-subheading rounded-lg pl-8 py-1"
                 />
             </div>
         </>

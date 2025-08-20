@@ -12,7 +12,7 @@ export default function Filters() {
     return (
         <>
             <div className="flex items-center">
-                <button className="flex items-center gap-2 text-primary border-2 px-2 py-1 font-medium border-border rounded-lg">
+                <button className="flex items-center gap-2 text-primary border px-2 py-1 font-medium border-border rounded-lg">
                     <IconArrowsUpDown />
                     Sort By
                 </button>
@@ -20,7 +20,7 @@ export default function Filters() {
                     filters.map((filter, index) => (
                         <button
                             key={index}
-                            className="text-subheading border-2 border-dashed px-2 py-1 font-medium border-border rounded-lg ml-2"
+                            className="text-subheading border border-dashed px-2 py-1 font-medium border-border rounded-lg ml-2"
                         >
                             {filter}
                         </button>

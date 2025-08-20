@@ -17,13 +17,13 @@ export default function Board() {
 
     if (!isAuthenticated) {
         router.push("/");
-        return <p className="text-center mt-20">Redirecting...</p>;
+        return <p className="text-center font-medium flex justify-center items-center h-screen text-xl">Loading...</p>;
     }
 
     return (
         <>
             <Navbar />
-            <div className="max-w-6xl border-2 border-border rounded-xl mx-auto mt-20 px-4 pt-8 min-h-[30rem] h-auto bg-neutral-100 pb-4">
+            <div className="max-w-6xl border border-border rounded-xl mx-auto mt-20 px-4 pt-8 min-h-[30rem] h-auto bg-white pb-4">
                 <Heading />
                 <Toolbar />
                 <Tasks />
