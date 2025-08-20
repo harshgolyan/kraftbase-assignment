@@ -8,7 +8,7 @@ export default function Views () {
     const [view, setView] = useState("board");
     return (
         <>
-            <div className="flex items-center text-subheading border font-medium border-border rounded-lg divide-x-2 divide-border">
+            <div className="flex items-center text-subheading border font-medium border-border rounded-lg divide-x divide-border">
                 <div className={`flex items-center gap-2 py-1 px-1 rounded-l-lg cursor-pointer ${view === "board" ? "bg-blue-accent text-blue" : "text-primary"}`} onClick={() => setView("board")}>
                     <IconColumns3 size={20} />
                     Board

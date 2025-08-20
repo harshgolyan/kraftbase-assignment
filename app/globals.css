@@ -10,11 +10,12 @@
   --color-red: #dc2626;
   --color-blue: #1e40af;
   --color-blue-accent: #bfdbfe;
-  --color-orange: #bfdbfe;
+  --color-orange: #f97316;
   --color-yellow: #eab308;
   --color-yellow-accent: #fef08a;
   --color-purple: #6b21a8;
   --color-purple-accent: #e9d5ff;
+  --color-green: #15803d;
 }
 
 .no-scrollbar::-webkit-scrollbar {
