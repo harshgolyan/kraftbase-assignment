@@ -23,7 +23,7 @@ export default function Board() {
     return (
         <>
             <Navbar />
-            <div className="max-w-6xl border-2 border-border rounded-xl mx-auto mt-20 px-4 pt-8 h-[30rem] bg-neutral-100">
+            <div className="max-w-6xl border-2 border-border rounded-xl mx-auto mt-20 px-4 pt-8 min-h-[30rem] h-auto bg-neutral-100 pb-4">
                 <Heading />
                 <Toolbar />
                 <Tasks />

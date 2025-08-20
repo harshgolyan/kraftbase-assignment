@@ -6,7 +6,7 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  isAuthenticated: false,
+   isAuthenticated: typeof window !== "undefined" ? !!localStorage.getItem("isAuthenticated") : false,
   email: null,
 };
 
