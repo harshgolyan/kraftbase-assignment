@@ -61,7 +61,7 @@ export default function Signin() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+      <div className="w-full sm:max-w-md max-w-sm bg-white rounded-2xl shadow-lg p-8">
         <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -104,7 +104,7 @@ export default function Signin() {
           </button>
         </form>
       </div>
-      <div className="mt-4 w-full bg-white rounded-xl max-w-md p-4 font-semibold text-lg">
+      <div className="mt-4 w-full bg-white rounded-xl sm:max-w-md max-w-sm p-4 font-semibold text-lg">
         Note: User Credentials are
         <div className="font-medium text-sm">Email: test@gmail.com</div>
         <div className="font-medium text-sm">Password: Test@123#</div>

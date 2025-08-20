@@ -9,7 +9,7 @@ export default function Navbar() {
     const dispatch = useDispatch<AppDispatch>();
     return (
         <>
-            <div className="max-w-xl mx-auto flex justify-between items-center mt-4 shadow-xs rounded-lg p-2 bg-white">
+            <div className="sm:max-w-xl max-w-sm mx-auto flex justify-between items-center mt-4 shadow-xs rounded-lg p-2 bg-white">
                 <div className="font-semibold text-2xl">Kanban Board</div>
                 <button
                     onClick={() => {
