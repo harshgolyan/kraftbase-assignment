@@ -32,15 +32,15 @@ const categoriesSlice = createSlice({
       const { taskId, fromCategoryId, toCategoryId } = action.payload;
       if (fromCategoryId === toCategoryId) return;
 
-      const fromCat = state.find((c) => c.id === fromCategoryId);
-      const toCat = state.find((c) => c.id === toCategoryId);
-      if (!fromCat || !toCat) return;
+      const fromCategories = state.find((c) => c.id === fromCategoryId);
+      const toCategories = state.find((c) => c.id === toCategoryId);
+      if (!fromCategories || !toCategories) return;
 
-      const task = fromCat.tasks.find((t) => t.id === taskId);
+      const task = fromCategories.tasks.find((t) => t.id === taskId);
       if (!task) return;
 
-      fromCat.tasks = fromCat.tasks.filter((t) => t.id !== taskId);
-      toCat.tasks.push(task);
+      fromCategories.tasks = fromCategories.tasks.filter((t) => t.id !== taskId);
+      toCategories.tasks.push(task);
     },
     deleteTask: (state, action: PayloadAction<{ categoryId: string; taskId: string }>) => {
       const { categoryId, taskId } = action.payload;

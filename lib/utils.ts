@@ -15,7 +15,7 @@ export const taskCategories: Category[] = [
                 assignedTo: "Harsh",
             },
             {
-                id: "#1111",
+                id: "#1112",
                 date: "2 Jan, 4:30 PM",
                 name: "Sample Draft",
                 difficulty: "low",
@@ -30,7 +30,7 @@ export const taskCategories: Category[] = [
         color: "bg-blue",
         tasks: [
             {
-                id: "#2222",
+                id: "#2221",
                 date: "3 Jan, 6:00 PM",
                 name: "Bug #42",
                 difficulty: "high",
@@ -45,7 +45,7 @@ export const taskCategories: Category[] = [
         color: "bg-orange",
         tasks: [
             {
-                id: "#2222",
+                id: "#3333",
                 date: "3 Jan, 6:00 PM",
                 name: "Bug #42",
                 difficulty: "high",
@@ -60,7 +60,7 @@ export const taskCategories: Category[] = [
         color: "bg-green",
         tasks: [
             {
-                id: "#2222",
+                id: "#4444",
                 date: "3 Jan, 6:00 PM",
                 name: "Bug #42",
                 difficulty: "high",
@@ -75,7 +75,7 @@ export const taskCategories: Category[] = [
         color: "bg-red",
         tasks: [
             {
-                id: "#2222",
+                id: "#5555",
                 date: "3 Jan, 6:00 PM",
                 name: "Bug #42",
                 difficulty: "high",

@@ -5,7 +5,11 @@ import { IconDots, IconPlus } from "@tabler/icons-react";
 import Cards from "./cards";
 import { Category } from "@/types/category";
 
-export default function TaskCategories({ categories }: { categories: Category[] }) {
+export default function TaskCategories({
+    categories,
+}: {
+    categories: Category[];
+}) {
     return (
         <div className="flex items-start gap-8 mb-4">
             {categories.map((category) => (
