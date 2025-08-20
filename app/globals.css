@@ -7,7 +7,7 @@
 
   --color-border: #a3a3a3;
 
-  --color-red: #991b1b;
+  --color-red: #dc2626;
   --color-blue: #1e40af;
   --color-blue-accent: #bfdbfe;
   --color-orange: #bfdbfe;
@@ -15,4 +15,13 @@
   --color-yellow-accent: #fef08a;
   --color-purple: #6b21a8;
   --color-purple-accent: #e9d5ff;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;  
 }

@@ -11,7 +11,7 @@ const categories = [
 export default function Tasks () {
     return (
         <>
-            <div className="overflow-scroll">
+            <div className="overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                 <TaskCategories categories={categories} />
             </div>
         </>
