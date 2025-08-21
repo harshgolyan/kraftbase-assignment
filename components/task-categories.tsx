@@ -4,22 +4,46 @@ import { useDroppable } from "@dnd-kit/core";
 import { IconDots, IconPlus } from "@tabler/icons-react";
 import Cards from "./cards";
 import { Category } from "@/types/category";
+import TaskModal from "./task-modal";
+import { useState } from "react";
 
 export default function TaskCategories({
     categories,
 }: {
     categories: Category[];
 }) {
-    return (
-        <div className="flex items-start gap-8 mb-4">
-            {categories.map((category) => (
-                <CategoryColumn key={category.id} category={category} />
-            ))}
-        </div>
-    );
+    const [isAddOpen, setIsAddOpen] = useState(false);
+  const [activeCategoryId, setActiveCategoryId] = useState<string | null>(null);
+
+  return (
+    <>
+      <div className="flex items-start gap-8 mb-4">
+        {categories.map((category) => (
+          <CategoryColumn
+            key={category.id}
+            category={category}
+            onAdd={() => {
+              setActiveCategoryId(category.id);
+              setIsAddOpen(true);
+            }}
+          />
+        ))}
+      </div>
+
+      {isAddOpen && activeCategoryId && (
+        <TaskModal
+          categoryId={activeCategoryId}
+          onClose={() => {
+            setIsAddOpen(false);
+            setActiveCategoryId(null);
+          }}
+        />
+      )}
+    </>
+  );
 }
 
-function CategoryColumn({ category }: { category: Category }) {
+function CategoryColumn({ category, onAdd }: { category: Category; onAdd: () => void }) {
     const { setNodeRef } = useDroppable({ id: category.id });
 
     return (
@@ -38,8 +62,8 @@ function CategoryColumn({ category }: { category: Category }) {
                     </div>
                 </div>
                 <div className="flex items-center gap-2 text-subheading">
-                    <IconDots size={20} />
-                    <IconPlus size={20} />
+                    <IconDots size={20} className="cursor-pointer hover:bg-secondary rounded-full" />
+                    <IconPlus size={20} className="cursor-pointer hover:bg-secondary rounded-full" onClick={onAdd} />
                 </div>
             </div>
 

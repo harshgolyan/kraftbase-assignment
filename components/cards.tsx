@@ -1,6 +1,7 @@
 "use client";
 
 import { useDraggable } from "@dnd-kit/core";
+import { useState } from "react";
 import {
     IconStar,
     IconRosetteDiscountCheck,
@@ -10,28 +11,32 @@ import { Task } from "@/types/category";
 import { difficultyColors, tagColors } from "@/types/category";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
+import TaskModal from "./task-modal";
 
 export default function Cards({ tasks }: { tasks: Task[] }) {
-    const searchedValue = useSelector((state: RootState) => state.filters.search);
+    const searchedValue = useSelector(
+        (state: RootState) => state.filters.search
+    );
     const label = useSelector((state: RootState) => state.filters.label);
     const categories = useSelector((state: RootState) => state.tasks);
     const sortBy = useSelector((state: RootState) => state.filters.sortBy);
 
-    // task filter by task name
+    const [modalTask, setModalTask] = useState<Task | null>(null);
+    const [modalCategoryId, setModalCategoryId] = useState<string | null>(null);
+
+    // Filter by search
     const searchFilteredTasks = tasks.filter((task) =>
         task.name.toLowerCase().includes(searchedValue.toLowerCase())
     );
 
     let finalTasks: Task[] = [];
-    // if label is not selected
+
     if (label === "") {
         finalTasks = searchFilteredTasks;
     } else {
-        // if label is selected 
         const category = categories.find(
             (cat) => cat.name.toLowerCase() === label.toLowerCase()
         );
-
         if (category) {
             finalTasks = searchFilteredTasks.filter((task) =>
                 category.tasks.some((catTask: Task) => catTask.id === task.id)
@@ -39,26 +44,59 @@ export default function Cards({ tasks }: { tasks: Task[] }) {
         }
     }
 
-    finalTasks = [...searchFilteredTasks].sort((a, b) => {
-        if (sortBy === "dateAsc") {
+    finalTasks = [...finalTasks].sort((a, b) => {
+        if (sortBy === "dateAsc")
             return new Date(a.date).getTime() - new Date(b.date).getTime();
-        }
-        if (sortBy === "dateDesc") {
+        if (sortBy === "dateDesc")
             return new Date(b.date).getTime() - new Date(a.date).getTime();
-        }
         return 0;
     });
 
     return (
-        <div className="space-y-3">
-            {finalTasks.map((task) => (
-                <TaskCard key={task.id} task={task} />
-            ))}
-        </div>
+        <>
+            <div className="space-y-3">
+                {finalTasks.map((task) => {
+                    const category = categories.find((cat) =>
+                        cat.tasks.some((t) => t.id === task.id)
+                    );
+                    return category ? (
+                        <TaskCard
+                            key={task.id}
+                            task={task}
+                            categoryId={category.id}
+                            onEdit={(task, categoryId) => {
+                                console.log("onEdit", categoryId, task);
+                                setModalTask(task);
+                                setModalCategoryId(categoryId);
+                            }}
+                        />
+                    ) : null;
+                })}
+            </div>
+
+            {modalTask && modalCategoryId && (
+                <TaskModal
+                    categoryId={modalCategoryId}
+                    task={modalTask}
+                    onClose={() => {
+                        setModalTask(null);
+                        setModalCategoryId(null);
+                    }}
+                />
+            )}
+        </>
     );
 }
 
-function TaskCard({ task }: { task: Task }) {
+function TaskCard({
+    task,
+    categoryId,
+    onEdit,
+}: {
+    task: Task;
+    categoryId: string;
+    onEdit: (task: Task, categoryId: string) => void;
+}) {
     const { attributes, listeners, setNodeRef, transform } = useDraggable({
         id: task.id,
     });
@@ -73,7 +111,12 @@ function TaskCard({ task }: { task: Task }) {
             style={style}
             {...listeners}
             {...attributes}
-            className="w-[16rem] border border-border rounded-lg p-3 bg-white shadow cursor-grab active:cursor-grabbing"
+            className="w-[16rem] border border-border rounded-lg p-3 bg-white shadow cursor-pointer active:cursor-grabbing"
+            onMouseDown={(e) => {
+                e.stopPropagation();
+                // console.log("Task clicked:", task);
+                onEdit(task, categoryId);
+            }}
         >
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-subheading">

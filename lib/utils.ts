@@ -45,7 +45,7 @@ export const taskCategories: Category[] = [
         color: "bg-orange",
         tasks: [
             {
-                id: "#3333",
+                id: "#3331",
                 date: "3 Jan, 6:00 PM",
                 name: "PII disclosure in logs",
                 difficulty: "low",
@@ -60,7 +60,7 @@ export const taskCategories: Category[] = [
         color: "bg-green",
         tasks: [
             {
-                id: "#4444",
+                id: "#4441",
                 date: "3 Jan, 6:00 PM",
                 name: "Signup flow fixed",
                 difficulty: "medium",
@@ -75,7 +75,7 @@ export const taskCategories: Category[] = [
         color: "bg-red",
         tasks: [
             {
-                id: "#5555",
+                id: "#5551",
                 date: "3 Jan, 6:00 PM",
                 name: "jwt secret exposed",
                 difficulty: "low",
