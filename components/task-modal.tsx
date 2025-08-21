@@ -1,4 +1,4 @@
-// task-modal.tsx
+
 "use client";
 
 import { useState, useMemo } from "react";
@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "@/store/store";
 import { addTask, updateTask, deleteTask } from "@/store/slices/categorySlice";
 import type { Task } from "@/types/category";
+import { motion } from "motion/react";
+import { IconX } from "@tabler/icons-react";
 
 function formatDate(date: Date) {
   return date.toLocaleString("en-US", {
@@ -78,7 +80,22 @@ export default function TaskModal({
       className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
       onClick={onClose}
     >
-      <div
+      <motion.div
+        initial={{
+            y: "-100vh",
+            opacity: 0,
+        }}
+        animate={{
+            y: 0,
+            opacity: 1,
+        }}
+        transition={{
+            duration: 0.3,
+            ease: "easeInOut",
+            type: "spring",
+            stiffness: 300,
+            damping: 30,
+        }}
         className="bg-white w-full max-w-md rounded-xl p-4 shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
@@ -87,7 +104,7 @@ export default function TaskModal({
             {task ? "Update Task" : "Add Task"}
           </h2>
           <button className="text-sm text-subheading hover:text-primary" onClick={onClose}>
-            ✕
+            <IconX size={24} />
           </button>
         </div>
 
@@ -189,7 +206,7 @@ export default function TaskModal({
             {task ? "Update Task" : "Add Task"}
           </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
