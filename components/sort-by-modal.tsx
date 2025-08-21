@@ -12,10 +12,11 @@ export default function SortByModal({
     setSortByModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
     const [activeModal, setActiveModal] = useState<"label" | "date" | null>(null);
+    console.log("Active Modal:", activeModal);
 
     return (
         <>
-            <div className="absolute top-10 bg-white h-19 w-fit rounded-lg border border-border divide-y divide-secondary text-lg font-medium">
+            <div className="absolute xl:top-10 xl:left-0 left-57 top-0 bg-white h-19 xl:w-fit w-[8rem] rounded-lg border border-border divide-y divide-secondary text-lg font-medium">
                 <div
                     className="px-2 py-1 cursor-pointer hover:bg-secondary rounded-t-md"
                     onClick={() => setActiveModal("label")}
@@ -63,7 +64,7 @@ export function SortByLabelModal({
     };
 
     return (
-        <div className="absolute top-10 left-32 bg-white h-auto w-fit rounded-lg border border-border text-lg font-medium">
+        <div className="absolute xl:top-10 xl:left-32 top-0 left-90 bg-white h-auto w-fit rounded-lg border border-border text-lg font-medium">
             <div className="cursor-pointer">
                 {categories.map((category, index) => (
                     <div
@@ -97,7 +98,7 @@ export function SortByDateModal({
     };
 
     return (
-        <div className="absolute top-10 left-32 bg-white h-19 w-fit rounded-lg border border-border divide-y divide-secondary text-lg font-medium">
+        <div className="absolute xl:top-10 xl:left-32 top-0 left-90 bg-white h-19 xl:w-fit w-[15rem] rounded-lg border border-border divide-y divide-secondary text-lg font-medium">
             <div
                 className="px-2 py-1 cursor-pointer hover:bg-secondary rounded-t-md"
                 onClick={() => handleDateSort("asc")}
